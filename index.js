@@ -12,6 +12,10 @@ server.use(express.json());
 /* ---------- Route Handlers ---------- */
 
 // GET /games
+server.get( '/games', (req, res) => {
+  res.send('Hello');
+});
+
 
 // POST /games
 
