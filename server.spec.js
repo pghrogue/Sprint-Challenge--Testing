@@ -3,7 +3,7 @@ const server = require('./server.js');
 
 describe('the server', () => {
 
-  describe('the POST endpoint', () => {});
+  describe('the POST endpoint', () => {
     const body = {
       title: 'Mortal Kombat',
       genre: 'Fighting',
@@ -24,15 +24,16 @@ describe('the server', () => {
 
     // Should validate the required fields of title & genre, otherwise return a 422.
     it( 'should return 422 if missing data', async () => {
-      const response = await request(server).post('/games').send(badBody);
+      const response = await request(server).post('/games').send();
 
       expect(response.status).toEqual(422);
     });
 
     // Should verify that the endpoint returns a 400 for incorrect data
 
-  describe('the GET endpoint', () => {});
+  });
 
+  describe('the GET endpoint', () => {
     // Should return a status 200
     it('should return an OK status', async () => {
       const expectedStatusCode = 200;
@@ -53,5 +54,8 @@ describe('the server', () => {
     it( 'should return an empty array if no games are found', async () => {
 
     });
+
+  });
+
 
 });
