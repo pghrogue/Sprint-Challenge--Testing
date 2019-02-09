@@ -4,13 +4,18 @@ const server = require('./server.js');
 describe('the server', () => {
 
   describe('the POST endpoint', () => {});
-    // Should accept an object with: title, genre & releaseYear
+    const body = {
+      title: 'Mortal Kombat',
+      genre: 'Fighting',
+      releaseYear: 1992
+    };
+
+    const badBody = {
+      title: 'Mortal Kombat'
+    }
+
+  // Should accept an object with: title, genre & releaseYear
     it( 'should accept an object with fields', async () => {
-      const body = {
-        title: 'Mortal Kombat',
-        genre: 'Fighting',
-        releaseYear: 1992
-      };
 
       const response = await request(server).post('/games').send(body);
 
@@ -18,8 +23,11 @@ describe('the server', () => {
     });
 
     // Should validate the required fields of title & genre, otherwise return a 422.
+    it( 'should return 422 if missing data', async () => {
+      const response = await request(server).post('/games').send(badBody);
 
-    // Should verify that the endpoint returns a 201 with good data
+      expect(response.status).toEqual(201);
+    });
 
     // Should verify that the endpoint returns a 400 for incorrect data
 

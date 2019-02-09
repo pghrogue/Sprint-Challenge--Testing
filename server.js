@@ -21,9 +21,25 @@ server.get( '/games', async (req, res) => {
     .catch( (err) => {
       res.status(500).json({ error: err });
     });
+  // end-db
 });
 
 
 // POST /games
+server.post( '/games', async (req, res) => {
+  const game = req.body;
+
+  // Only proceed if title and genre are in req
+  if( game.title && game.genre ) {
+    db('games').insert(game)
+      .then( (newGame) => {
+        res.status(201).json(newGame);
+      })
+      .catch( (err) => {
+        res.status(500).json({ error: err });
+      });
+    // end-db
+  }
+});
 
 module.exports = server;
