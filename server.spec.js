@@ -5,6 +5,17 @@ describe('the server', () => {
 
   describe('the POST endpoint', () => {});
     // Should accept an object with: title, genre & releaseYear
+    it( 'should accept an object with fields', async () => {
+      const body = {
+        title: 'Mortal Kombat',
+        genre: 'Fighting',
+        releaseYear: 1992
+      };
+
+      const response = await request(server).post('/games').send(body);
+
+      expect(response.status).toBe(201);
+    });
 
     // Should validate the required fields of title & genre, otherwise return a 422.
 
@@ -31,6 +42,8 @@ describe('the server', () => {
     });
 
     // Should return an empty array if no games are stored
+    it( 'should return an empty array if no games are found', async () => {
 
+    });
 
 });
