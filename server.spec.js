@@ -14,6 +14,7 @@ describe('the server', () => {
 
   describe('the GET endpoint', () => {});
 
+    // Should return a status 200
     it('should return an OK status', async () => {
       const expectedStatusCode = 200;
 
@@ -22,7 +23,12 @@ describe('the server', () => {
       expect(response.status).toEqual(expectedStatusCode);
     });
 
-    // Should return the list of games
+    // Should return the json list of games
+    it( 'should return a json list of games', () => {
+      const response = await request(server).get('/games');
+
+      expect(response.type).toMatch(/json/i);
+    });
 
     // Should return an empty array if no games are stored
 
