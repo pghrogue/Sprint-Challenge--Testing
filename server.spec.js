@@ -24,7 +24,7 @@ describe('the server', () => {
     });
 
     // Should return the json list of games
-    it( 'should return a json list of games', () => {
+    it( 'should return a json list of games', async () => {
       const response = await request(server).get('/games');
 
       expect(response.type).toMatch(/json/i);
