@@ -1,5 +1,5 @@
 const request = require('supertest');
-const server = require('./index.js');
+const server = require('./server.js');
 
 describe('the server', () => {
 
@@ -14,7 +14,6 @@ describe('the server', () => {
 
   describe('the GET endpoint', () => {});
 
-    // Should return a status code 200
     it('should return an OK status', async () => {
       const expectedStatusCode = 200;
 

@@ -1,20 +1,20 @@
 // Base require:
-const express = require('express');
+//const express = require('express');
 
 // Server:
-const server = express();
+const server = require('./server.js');
 const PORT = 1234;
 
 // Middleware:
-server.use(express.json());
+//server.use(express.json());
 
 
 /* ---------- Route Handlers ---------- */
 
 // GET /games
-server.get( '/games', (req, res) => {
-  res.send('Hello');
-});
+// server.get( '/games', async (req, res) => {
+//   res.status(200).send('Hello');
+// });
 
 
 // POST /games
