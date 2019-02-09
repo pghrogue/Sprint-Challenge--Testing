@@ -1,5 +1,9 @@
 const request = require('supertest');
 const server = require('./server.js');
+const knex = require('knex');
+
+const dbConfig = require('./knexfile');
+const db = knex(dbConfig.development);
 
 describe('the server', () => {
 
@@ -52,7 +56,11 @@ describe('the server', () => {
 
     // Should return an empty array if no games are stored
     it( 'should return an empty array if no games are found', async () => {
+      await db('games').truncate();
 
+      const response = await request(server).get('/games');
+
+      expect(response.body).toEqual([]);
     });
 
   });
