@@ -13,7 +13,15 @@ describe('the server', () => {
     // Should verify that the endpoint returns a 400 for incorrect data
 
   describe('the GET endpoint', () => {});
+  
     // Should return a status code 200
+    it('should return an OK status', () => {
+      const expectedStatusCode = 200;
+
+      const response = await request(server).get('/games');
+
+      expect(response.status).toEqual(expectedStatusCode);
+    });
 
     // Should return the list of games
 
