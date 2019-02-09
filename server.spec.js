@@ -28,12 +28,17 @@ describe('the server', () => {
 
     // Should validate the required fields of title & genre, otherwise return a 422.
     it( 'should return 422 if missing data', async () => {
-      const response = await request(server).post('/games').send();
+      const response = await request(server).post('/games').send(badBody);
 
       expect(response.status).toEqual(422);
     });
 
-    // Should verify that the endpoint returns a 400 for incorrect data
+    // Should verify that the endpoint returns the id on success
+    it( 'should return the new game id on success', async () => {
+      const response = await request(server).post('/games').send(body);
+
+      expect(response.body).toBeInstanceOf(Array);
+    });
 
   });
 
