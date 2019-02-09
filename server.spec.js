@@ -26,7 +26,7 @@ describe('the server', () => {
     it( 'should return 422 if missing data', async () => {
       const response = await request(server).post('/games').send(badBody);
 
-      expect(response.status).toEqual(201);
+      expect(response.status).toEqual(422);
     });
 
     // Should verify that the endpoint returns a 400 for incorrect data
